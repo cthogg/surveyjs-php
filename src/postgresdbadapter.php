@@ -104,5 +104,23 @@
             }
             return $data;
         }
+
+        public function getOneResult($postId) {
+            $sqlQuery = 'SELECT * FROM results';
+            //$sqlQuery = 'SELECT * FROM results WHERE postid=\'' . $postId . '\'';
+            $data = array();
+            $sql = $this->dbh->query($sqlQuery);
+            while($result = $sql->fetch(PDO::FETCH_ASSOC)) {
+                 array_push($data, json_decode($result['json']));
+            }
+           //Returns a custom colour. The value and field can be changed.
+
+           $customColour = array_filter($data, function($obj)
+            {
+                return $obj->Colour == "Red";
+            });
+            return $customColour;
+
+        }
     }
 ?>

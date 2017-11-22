@@ -86,12 +86,20 @@
         //return response($resultJson, 200, ['content-type' => 'application/json', 'Access-Control-Allow-Origin' => '*']);
         return response($resultJson, 200, ['content-type' => 'application/json']);
     });
+
+    route('GET', '/oneresult', function ($db, $config) {
+        $postId = $_GET['postId'];
+        $resultsFromStorage = $db->getOneResult($postId);
+        $resultJson = json_encode($resultsFromStorage);
+        //return response($resultJson, 200, ['content-type' => 'application/json', 'Access-Control-Allow-Origin' => '*']);
+        return response($resultJson, 200, ['content-type' => 'application/json']);
+    });
     
     // $config = require __DIR__.'/config.php';
     // $db = createDBConnection($config['db']);
     $config = null;
-    $db = new InMemoryDBAdapter($config);
-    //$db = new PostgresDBAdapter($config);
+    //$db = new InMemoryDBAdapter($config);
+    $db = new PostgresDBAdapter($config);
     
     dispatch($db, $config);
 ?>

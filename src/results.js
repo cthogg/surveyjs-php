@@ -19,6 +19,16 @@ function SurveyManager(baseUrl, accessKey) {
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.onload = function () {
             var result = xhr.response ? JSON.parse(xhr.response) : {};
+            //for each in result. parse to a JSON and then to a JSON array.
+            var JsonArray = [];
+            for (i=0; i< result.length; i++){
+                var resultJson = JSON.parse(result[i]);
+                JsonArray.push(resultJson)
+            };
+            console.log(JsonArray);
+            console.log(JsonArray.filter(function(signUp){
+                return signUp.UserID == "hogg"
+            }));
             self.results(result);
         };
         xhr.send();
