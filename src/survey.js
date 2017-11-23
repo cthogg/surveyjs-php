@@ -30,7 +30,10 @@ function init() {
         var values = result[key];
         console.log(values);
         //TODO: Set values from the variable "values" above .
-        model.setValue("Colour", values.Colour);
+        for(i=0; i< Object.keys(values).length; i++){
+            keyName= String(Object.keys(values)[i]);
+            model.setValue(keyName, values[keyName]);
+        }
         model.render("surveyElement");
     };
     xhrT.send();
