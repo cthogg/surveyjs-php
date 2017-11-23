@@ -114,7 +114,7 @@
                  array_push($data, json_decode($result['json']));
             }
            //Returns a custom colour. The value and field can be changed.
-            //TODO: I think the "too full table" bug is created because this SQL query returns everything as true.
+            //TODO: I think the "too full table" bug is created because this SQL query returns everything as true. Better to return the most recent result only.
            $customColour = array_filter($data, function($obj)
             {
                 return true; //$obj->Colour == "Red";
