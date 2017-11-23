@@ -19,16 +19,19 @@ function init() {
 
     //Get Model
     var xhrT = new XMLHttpRequest();
-    xhrT.open('GET', "http://localhost:8000/oneresult?postId=NewSurvey1");
+    xhrT.open('GET', "http://localhost:8000" + '/oneresult?surveyId=' + surveyId);
     xhrT.setRequestHeader('Content-Type', 'application/json');
     xhrT.onload = function () {
         console.log("loaded");
         console.log(xhrT.response);
+        //TODO: Find out what the object.keys mean.
         var result = JSON.parse(xhrT.response);
-        console.log(result);
+        var key = Object.keys(result)[0];
+        var values = result[key];
+        console.log(values);
+        //TODO: Set values from the variable "values" above .
         model.setValue("Colour", "Red");
         model.setValue("Colour2", "Custom Colour");
-        model.prototype.data(result);
         model.render("surveyElement");
     };
     xhrT.send();
