@@ -18,13 +18,11 @@ editor.saveSurveyFunc = function (saveNo, callback) {
     xhr.open('POST', Survey.dxSurveyService.serviceUrl + '/changeJson?accessKey=' + accessKey);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.onload = function () {
-        console.log(xhr.response);
         var result = xhr.response ? JSON.parse(xhr.response) : null;
         if(xhr.status === 200) {
             callback(saveNo, true)
         }
     };
-    console.log(editor.text);
     xhr.send(JSON.stringify({ Id: surveyId, Json: editor.text, Text: editor.text }));
 };
 editor.isAutoSave = true;

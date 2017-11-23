@@ -36,6 +36,180 @@
             </div>
         </div>
     </section>
+<h2> Winter Retreat JSON File </h2>
+<p>
+    {
+    "pages": [
+    {
+    "name": "page1",
+    "elements": [
+    {
+    "type": "text",
+    "name": "UserID",
+    "title": "Was ist Ihre UserId? ",
+    "isRequired": true
+    },
+    {
+    "type": "radiogroup",
+    "name": "Teilnahme",
+    "title": "Welche Daten möchten Sie teilnehmen? ",
+    "isRequired": true,
+    "choices": [
+    "Erster Termin",
+    "Zweiter Termin",
+    "Beide Termine",
+    "Gar nicht"
+    ]
+    },
+    {
+    "type": "radiogroup",
+    "name": "1Übernachtungen",
+    "visible": false,
+    "visibleIf": "{Teilnahme} = \"Erster Termin\" or {Teilnahme} = \"Beide Termine\" ",
+    "title": "Welche Daten möchten Sie übernachten? (Erster Termin)",
+    "choices": [
+    "Keine (nur Freitag)",
+    "Donnerstag bis Freitag",
+    "Freitag bis Samstag",
+    "Beide Nächte"
+    ]
+    },
+    {
+    "type": "radiogroup",
+    "name": "1AnreiseDonnerstag",
+    "visible": false,
+    "visibleIf": "({Teilnahme} = \"Erster Termin\" or {Teilnahme} = \"Beide Termine\") and ({1Übernachtungen} = \"Donnerstag bis Freitag\" or {1Übernachtungen} = \"Beide Nächte\") ",
+    "title": "Anreise Donnerstag (Erster Termin)",
+    "choices": [
+    "Bus vom UFO Donnerstagabend",
+    "Bus vom ZOB Donnerstagabend",
+    "Selbstfahrer/Mitfahrer"
+    ]
+    },
+    {
+    "type": "radiogroup",
+    "name": "1AnreiseFreitag",
+    "visible": false,
+    "visibleIf": "({Teilnahme} = \"Erster Termin\" or {Teilnahme} = \"Beide Termine\") and ({1Übernachtungen} = \"Freitag bis Samstag\" or {1Übernachtungen} = \"Keine (nur Freitag)\") ",
+    "title": "Anreise Freitag (Erster Termin)",
+    "choices": [
+    "Bus vom ZOB Freitagfrüh",
+    "Selbstfahrer/Mitfahrer"
+    ]
+    },
+    {
+    "type": "radiogroup",
+    "name": "1Abreise",
+    "visible": false,
+    "visibleIf": "({Teilnahme} = \"Erster Termin\" or {Teilnahme} = \"Beide Termine\") and ({1Übernachtungen} = \"Freitag bis Samstag\" or {1Übernachtungen} = \"Beide Nächte\")",
+    "title": "Abreise (Erster Termin) ",
+    "choices": [
+    "Bus zum ZOB am Vormittag",
+    "Bus zum UFO am Nachmittag",
+    "Bus zum ZOB am Nachmittag",
+    "Selbstfahrer"
+    ]
+    },
+    {
+    "type": "radiogroup",
+    "name": "1DinnerFreitagAbend",
+    "visible": false,
+    "visibleIf": "({Teilnahme} = \"Erster Termin\" or {Teilnahme} = \"Beide Termine\") and ({1Übernachtungen}= \"Beide Nächte\" or {1Übernachtungen} = \"Freitag bis Samstag\")",
+    "title": "Dinner Freitag Abend (Erster Termin) ",
+    "choices": [
+    "Ja",
+    "Nein"
+    ]
+    },
+    {
+    "type": "radiogroup",
+    "name": "2Übernachtungen",
+    "visible": false,
+    "visibleIf": "{Teilnahme} = \"Zweiter Termin\" or {Teilnahme} = \"Beide Termine\" ",
+    "title": "Welche Daten möchten Sie übernachten? (Zweiter Termin)",
+    "choices": [
+    "Keine (nur Freitag)",
+    "Donnerstag bis Freitag",
+    "Freitag bis Samstag",
+    "Beide Nächte"
+    ]
+    },
+    {
+    "type": "radiogroup",
+    "name": "2AnreiseDonnerstag",
+    "visible": false,
+    "visibleIf": "({Teilnahme} = \"Zweiter Termin\" or {Teilnahme} = \"Beide Termine\") and ({2Übernachtungen} = \"Donnerstag bis Freitag\" or {2Übernachtungen} = \"Beide Nächte\") ",
+    "title": "Anreise Donnerstag (Zweiter Termin)",
+    "choices": [
+    "Bus vom UFO Donnerstagabend",
+    "Bus vom ZOB Donnerstagabend",
+    "Selbstfahrer/Mitfahrer"
+    ]
+    },
+    {
+    "type": "radiogroup",
+    "name": "2AnreiseFreitag",
+    "visible": false,
+    "visibleIf": "({Teilnahme} = \"Zweiter Termin\" or {Teilnahme} = \"Beide Termine\") and ({2Übernachtungen} = \"Freitag bis Samstag\" or {2Übernachtungen} = \"Keine (nur Freitag)\") ",
+    "title": "Anreise Freitag (Zweiter Termin)",
+    "choices": [
+    "Bus vom ZOB Freitagfrüh",
+    "Selbstfahrer/Mitfahrer"
+    ]
+    },
+    {
+    "type": "radiogroup",
+    "name": "2Abreise",
+    "visible": false,
+    "visibleIf": "({Teilnahme} = \"Zweiter Termin\" or {Teilnahme} = \"Beide Termine\") and ({2Übernachtungen}= \"Beide Nächte\" or {2Übernachtungen} = \"Freitag bis Samstag\")",
+    "title": "Abreise (Zweiter Termin) ",
+    "choices": [
+    "Bus zum ZOB am Vormittag",
+    "Bus zum UFO am Nachmittag",
+    "Bus zum ZOB am Nachmittag",
+    "Selbstfahrer"
+    ]
+    },
+    {
+    "type": "radiogroup",
+    "name": "2DinnerFreitagAbend",
+    "visible": false,
+    "visibleIf": "({Teilnahme} = \"Zweiter Termin\" or {Teilnahme} = \"Beide Termine\") and ({2Übernachtungen}= \"Beide Nächte\" or {2Übernachtungen} = \"Freitag bis Samstag\")",
+    "title": "Dinner Freitag Abend (Zweiter Termin) ",
+    "choices": [
+    "Ja",
+    "Nein"
+    ]
+    },
+    {
+    "type": "radiogroup",
+    "name": "Essen",
+    "visible": false,
+    "visibleIf": "({Teilnahme} = \"Zweiter Termin\" or {Teilnahme} = \"Beide Termine\" or {Teilnahme} = \"Erster Termin\" ) ",
+    "title": "Essen (Erster und Zweiter Termin) ",
+    "choices": [
+    "Alleeesser",
+    "Vegetarier"
+    ]
+    },
+    {
+    "type": "text",
+    "name": "EssenBesondere",
+    "visible": false,
+    "visibleIf": "({Teilnahme} = \"Zweiter Termin\" or {Teilnahme} = \"Beide Termine\" or {Teilnahme} = \"Erster Termin\" ) ",
+    "title": "Essen Besondere Wünsche (Erster und Zweiter Termin)"
+    },
+    {
+    "type": "text",
+    "name": "AnyComments",
+    "title": "Any other comments "
+    }
+    ]
+    }
+    ]
+    }
+
+</p>
 </body>
 <script src="index.js"></script>
 </html>
