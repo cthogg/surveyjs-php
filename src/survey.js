@@ -31,7 +31,6 @@ function init() {
         console.log(values);
         //TODO: Set values from the variable "values" above .
         model.setValue("Colour", "Red");
-        model.setValue("Colour2", "Custom Colour");
         model.render("surveyElement");
     };
     xhrT.send();

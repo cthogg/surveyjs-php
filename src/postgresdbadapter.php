@@ -117,7 +117,7 @@
 
            $customColour = array_filter($data, function($obj)
             {
-                return $obj->Colour2 == "Chris";
+                return $obj->Colour == "Red";
             });
             return $customColour;
 
