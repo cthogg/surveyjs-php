@@ -19,21 +19,18 @@ function init() {
 
     //Get Model
     var xhrT = new XMLHttpRequest();
+    //TODO: Bug is caused because the oneresult query returns everything as true (see postgresadapter.php).
     xhrT.open('GET', "http://localhost:8000" + '/oneresult?surveyId=' + surveyId);
     xhrT.setRequestHeader('Content-Type', 'application/json');
     xhrT.onload = function () {
-        console.log("loaded");
-        console.log(xhrT.response);
         //TODO: Find out what the object.keys mean.
         var result = JSON.parse(xhrT.response);
         var key = Object.keys(result)[result.length -1];
         var values = result[key];
-        console.log(values);
-        //TODO: Set values from the variable "values" above .
         for(i=0; i< Object.keys(values).length; i++){
             keyName= String(Object.keys(values)[i]);
             model.setValue(keyName, values[keyName]);
-        }
+        };
         model.render("surveyElement");
     };
     xhrT.send();
@@ -41,7 +38,21 @@ function init() {
 
     window.survey = model;
     model.render("surveyElement");
-    
+    survey.onComplete.add(function(result) {
+        //TODO: The result.data needs to only have the current data. Not the things beforehand.
+        console.log(result.data);
+        // TODO: Output to table from https://www.w3schools.com/js/js_json_html.asp
+        //TODO: Possibly it would be better to create a Survey Model instead. That should come later though.
+        myObj = result.data;
+        var txt = "";
+        txt += "<table border='1'>"
+        for (x in myObj) {
+            txt += "<tr><td>" + x + "</td> <td>" + myObj[x] + "</td></tr>";
+        }
+        txt += "</table>"
+        document.getElementById("surveyResult").innerHTML = txt;
+
+    });
     //Load survey by id from url
 
     //To get one result.
