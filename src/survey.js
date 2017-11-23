@@ -26,11 +26,11 @@ function init() {
         console.log(xhrT.response);
         //TODO: Find out what the object.keys mean.
         var result = JSON.parse(xhrT.response);
-        var key = Object.keys(result)[0];
+        var key = Object.keys(result)[result.length -1];
         var values = result[key];
         console.log(values);
         //TODO: Set values from the variable "values" above .
-        model.setValue("Colour", "Red");
+        model.setValue("Colour", values.Colour);
         model.render("surveyElement");
     };
     xhrT.send();
