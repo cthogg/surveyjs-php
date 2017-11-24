@@ -61,16 +61,21 @@ function init() {
     });
     //CSS Classes are changes here.
     survey.onUpdateQuestionCssClasses.add(function(survey, options) {
-        var classes = options.cssClasses
+        var classes = options.cssClasses;
 
         classes.root = "sq-root";
         classes.title = "sq-title";
         classes.item = "sq-item";
         classes.label = "sq-label";
+        classes.mainRoot="sq-mainRoot";
 
         if (options.question.isRequired) {
             classes.title = "sq-title sq-title-required";
             classes.root = "sq-root sq-root-required";
+        }
+
+        if (options.question.getType() === "checkbox") {
+            classes.root = "sq-root sq-root-cb";
         }
 
         if (options.question.getType() === "checkbox") {
