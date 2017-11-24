@@ -1,3 +1,11 @@
+Survey.Survey.cssType = "bootstrap";
+Survey.defaultBootstrapCss.navigationButton = "btn btn-green";
+$.material.init();
+
+Survey.defaultBootstrapMaterialCss.navigationButton = "btn btn-green";
+Survey.defaultBootstrapMaterialCss.rating.item = "btn btn-default my-rating";
+Survey.Survey.cssType = "bootstrapmaterial";
+
 function getParams() {
     var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
     var result = {};
