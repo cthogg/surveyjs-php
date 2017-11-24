@@ -24,7 +24,6 @@ function init() {
     xhrT.open('GET', "http://localhost:8000" + '/oneresult?surveyId=' + surveyId);
     xhrT.setRequestHeader('Content-Type', 'application/json');
     xhrT.onload = function () {
-        //TODO: Find out what the object.keys mean.
         var result = JSON.parse(xhrT.response);
         var key = Object.keys(result)[result.length -1];
         var values = result[key];
@@ -35,23 +34,14 @@ function init() {
         model.render("surveyElement");
     };
     xhrT.send();
-
-
     window.survey = model;
     model.render("surveyElement");
-    model.setValue('questionName', newValue);
-    var storageName = "SurveyJS_LoadState";
-    function saveState(survey) {
-        var res = { currentPageNo: survey.currentPageNo, data: survey.data};
-        //Here should be the code to save the data into your database
-        window.localStorage.setItem(storageName, JSON.stringify(res));
-    }
-
+    //TODO: I do not think the onComplete method is needed. Only a save event. But how to save it?
     survey.onComplete.add(function(result) {
+
+
         //TODO: The result.data needs to only have the current data. Not the things beforehand.
         console.log(result.data);
-        // TODO: Output to table from https://www.w3schools.com/js/js_json_html.asp
-        //TODO: Possibly it would be better to create a Survey Model instead. That should come later though.
         myObj = result.data;
         var txt = "";
         txt += "<table border='1'>"
@@ -61,8 +51,19 @@ function init() {
         txt += "</table>"
         document.getElementById("surveyResult").innerHTML = txt;
 
+        function saveState(survey) {
+            var res = { currentPageNo: survey.currentPageNo, data: survey.data};
+            //Here should be the code to save the data into your database
+            window.localStorage.setItem(storageName, JSON.stringify(res));
+        }
+
     });
-    //CSS Classes are changes here.
+
+
+
+
+
+    //CSS Classes are changed here.
     survey.onUpdateQuestionCssClasses.add(function(survey, options) {
         var classes = options.cssClasses;
 
@@ -85,9 +86,6 @@ function init() {
             classes.root = "sq-root sq-root-cb";
         }
     });
-    //Load survey by id from url
-
-    //To get one result.
 
 /*
      /!*var xhr = new XMLHttpRequest();
