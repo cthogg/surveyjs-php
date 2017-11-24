@@ -8,17 +8,12 @@ function getParams() {
     return result;
 }
 
-  
+
 function init() {
 
     Survey.dxSurveyService.serviceUrl = "http://localhost:8000";
     Survey.defaultBootstrapCss.navigationButton = "btn btn-primary";
     Survey.Survey.cssType = "bootstrap";
-
-    var myCss = {
-        matrix: {root: "table table-striped"},
-        navigationButton: "button btn-lg"
-    };
 
     var surveyId = getParams()["id"];
     var model = new Survey.Model({ surveyId: surveyId, surveyPostId: surveyId });
@@ -44,6 +39,14 @@ function init() {
 
     window.survey = model;
     model.render("surveyElement");
+    model.setValue('questionName', newValue);
+    var storageName = "SurveyJS_LoadState";
+    function saveState(survey) {
+        var res = { currentPageNo: survey.currentPageNo, data: survey.data};
+        //Here should be the code to save the data into your database
+        window.localStorage.setItem(storageName, JSON.stringify(res));
+    }
+
     survey.onComplete.add(function(result) {
         //TODO: The result.data needs to only have the current data. Not the things beforehand.
         console.log(result.data);

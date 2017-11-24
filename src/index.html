@@ -62,10 +62,11 @@
     ]
     },
     {
+    "type": "panel",
+    "elements": [
+    {
     "type": "radiogroup",
     "name": "1Übernachtungen",
-    "visible": false,
-    "visibleIf": "{Teilnahme} = \"Erster Termin\" or {Teilnahme} = \"Beide Termine\" ",
     "title": "Welche Daten möchten Sie übernachten? (Erster Termin)",
     "choices": [
     "Keine (nur Freitag)",
@@ -78,7 +79,7 @@
     "type": "radiogroup",
     "name": "1AnreiseDonnerstag",
     "visible": false,
-    "visibleIf": "({Teilnahme} = \"Erster Termin\" or {Teilnahme} = \"Beide Termine\") and ({1Übernachtungen} = \"Donnerstag bis Freitag\" or {1Übernachtungen} = \"Beide Nächte\") ",
+    "visibleIf": "({1Übernachtungen} = \"Donnerstag bis Freitag\" or {1Übernachtungen} = \"Beide Nächte\")",
     "title": "Anreise Donnerstag (Erster Termin)",
     "choices": [
     "Bus vom UFO Donnerstagabend",
@@ -90,7 +91,7 @@
     "type": "radiogroup",
     "name": "1AnreiseFreitag",
     "visible": false,
-    "visibleIf": "({Teilnahme} = \"Erster Termin\" or {Teilnahme} = \"Beide Termine\") and ({1Übernachtungen} = \"Freitag bis Samstag\" or {1Übernachtungen} = \"Keine (nur Freitag)\") ",
+    "visibleIf": "({1Übernachtungen} = \"Freitag bis Samstag\" or {1Übernachtungen} = \"Keine (nur Freitag)\") ",
     "title": "Anreise Freitag (Erster Termin)",
     "choices": [
     "Bus vom ZOB Freitagfrüh",
@@ -101,7 +102,7 @@
     "type": "radiogroup",
     "name": "1Abreise",
     "visible": false,
-    "visibleIf": "({Teilnahme} = \"Erster Termin\" or {Teilnahme} = \"Beide Termine\") and ({1Übernachtungen} = \"Freitag bis Samstag\" or {1Übernachtungen} = \"Beide Nächte\")",
+    "visibleIf": "({1Übernachtungen} = \"Freitag bis Samstag\" or {1Übernachtungen} = \"Beide Nächte\")",
     "title": "Abreise (Erster Termin) ",
     "choices": [
     "Bus zum ZOB am Vormittag",
@@ -114,18 +115,26 @@
     "type": "radiogroup",
     "name": "1DinnerFreitagAbend",
     "visible": false,
-    "visibleIf": "({Teilnahme} = \"Erster Termin\" or {Teilnahme} = \"Beide Termine\") and ({1Übernachtungen}= \"Beide Nächte\" or {1Übernachtungen} = \"Freitag bis Samstag\")",
+    "visibleIf": "({1Übernachtungen}= \"Beide Nächte\" or {1Übernachtungen} = \"Freitag bis Samstag\")",
     "title": "Dinner Freitag Abend (Erster Termin) ",
     "choices": [
     "Ja",
     "Nein"
     ]
+    }
+    ],
+    "name": "1Panel",
+    "title": "1st Winter Retreat",
+    "visible": false,
+    "visibleIf": "{Teilnahme} = \"Erster Termin\" or {Teilnahme} = \"Beide Termine\" "
     },
+    {
+    "type": "panel",
+    "elements": [
+
     {
     "type": "radiogroup",
     "name": "2Übernachtungen",
-    "visible": false,
-    "visibleIf": "{Teilnahme} = \"Zweiter Termin\" or {Teilnahme} = \"Beide Termine\" ",
     "title": "Welche Daten möchten Sie übernachten? (Zweiter Termin)",
     "choices": [
     "Keine (nur Freitag)",
@@ -138,7 +147,7 @@
     "type": "radiogroup",
     "name": "2AnreiseDonnerstag",
     "visible": false,
-    "visibleIf": "({Teilnahme} = \"Zweiter Termin\" or {Teilnahme} = \"Beide Termine\") and ({2Übernachtungen} = \"Donnerstag bis Freitag\" or {2Übernachtungen} = \"Beide Nächte\") ",
+    "visibleIf": "({2Übernachtungen} = \"Donnerstag bis Freitag\" or {2Übernachtungen} = \"Beide Nächte\") ",
     "title": "Anreise Donnerstag (Zweiter Termin)",
     "choices": [
     "Bus vom UFO Donnerstagabend",
@@ -150,7 +159,7 @@
     "type": "radiogroup",
     "name": "2AnreiseFreitag",
     "visible": false,
-    "visibleIf": "({Teilnahme} = \"Zweiter Termin\" or {Teilnahme} = \"Beide Termine\") and ({2Übernachtungen} = \"Freitag bis Samstag\" or {2Übernachtungen} = \"Keine (nur Freitag)\") ",
+    "visibleIf": "({2Übernachtungen} = \"Freitag bis Samstag\" or {2Übernachtungen} = \"Keine (nur Freitag)\") ",
     "title": "Anreise Freitag (Zweiter Termin)",
     "choices": [
     "Bus vom ZOB Freitagfrüh",
@@ -161,7 +170,7 @@
     "type": "radiogroup",
     "name": "2Abreise",
     "visible": false,
-    "visibleIf": "({Teilnahme} = \"Zweiter Termin\" or {Teilnahme} = \"Beide Termine\") and ({2Übernachtungen}= \"Beide Nächte\" or {2Übernachtungen} = \"Freitag bis Samstag\")",
+    "visibleIf": "({2Übernachtungen}= \"Beide Nächte\" or {2Übernachtungen} = \"Freitag bis Samstag\")",
     "title": "Abreise (Zweiter Termin) ",
     "choices": [
     "Bus zum ZOB am Vormittag",
@@ -174,12 +183,18 @@
     "type": "radiogroup",
     "name": "2DinnerFreitagAbend",
     "visible": false,
-    "visibleIf": "({Teilnahme} = \"Zweiter Termin\" or {Teilnahme} = \"Beide Termine\") and ({2Übernachtungen}= \"Beide Nächte\" or {2Übernachtungen} = \"Freitag bis Samstag\")",
+    "visibleIf": "({2Übernachtungen}= \"Beide Nächte\" or {2Übernachtungen} = \"Freitag bis Samstag\")",
     "title": "Dinner Freitag Abend (Zweiter Termin) ",
     "choices": [
     "Ja",
     "Nein"
     ]
+    }
+    ],
+    "name": "2Panel",
+    "title": "2nd Winter Retreat",
+    "visible": false,
+    "visibleIf": "{Teilnahme} = \"Zweiter Termin\" or {Teilnahme} = \"Beide Termine\" "
     },
     {
     "type": "radiogroup",
